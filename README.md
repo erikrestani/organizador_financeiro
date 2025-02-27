@@ -1,16 +1,25 @@
-# organizador_financeiro
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Finance Organizer</h1>
 
-A new Flutter project.
+  <h2>📖 About</h2>
+  <p>
+    This project is a personal finance organizer created to improve my mobile development skills. It helps users manage income, expenses, and budgets efficiently with visual charts and transaction records.
+  </p>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  <h2>💻 Technologies Used</h2>
+  <ul>
+    <li>
+      <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter Badge">
+    </li>
+    <li>
+      <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart Badge">
+    </li>
+  </ul>
+</body>
+</html>
