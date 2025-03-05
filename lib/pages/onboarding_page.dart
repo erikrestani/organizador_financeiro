@@ -5,11 +5,12 @@ class OnBoardingPage {
   final String title;
   final String subtitle;
   final bool showButton;
-
+  final String buttonText;
   OnBoardingPage({
     required this.image,
     required this.title,
     required this.subtitle,
+    this.buttonText = 'How does it work?',
     this.showButton = true,
   });
 }
@@ -31,27 +32,35 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
       title: 'Your Personal\nGuide to Stability',
       subtitle:
           'We help you track patterns,\n detect early warning signs, and\n take action before mood\n episodes happen.',
+      buttonText: "How does it work? ",
     ),
     OnBoardingPage(
       image: 'assets/onboarding.png',
       title: 'Permission to Collect\n Behavioral Data',
       subtitle:
-          '📱 Help Us Detect Early Signs\nTo predict mood shifts, we analyze\n patterns in phone usage, movement, and sleep trends.\n\n 🔒 Your Data is Private & Secure\nWe never sell your data. You control what is shared and can opt out anytime.',
+          '📱 Help Us Detect Early Signs\nTo predict mood shifts, we analyze\npatterns in phone usage, movement, and sleep trends.\n\n 🔒 Your Data is Private & Secure\nWe never sell your data. You control what is shared and can opt out anytime.',
+      buttonText: "Grant Permission",
     ),
     OnBoardingPage(
       image: 'assets/onboarding.png',
-      title: 'Get Insights',
-      subtitle: 'Receive personalized insights based on your data.',
+      title: 'Mood Check-Ins',
+      subtitle:
+          "📝 Help Us Personalize Predictions\nA quick daily mood check-in helps\n improve accuracy.\n\nSet up reminders:\n\n[ ⏰ Morning ] [ ⏰ Evening ] [ ⏰ Both ] ",
+      buttonText: 'Next',
     ),
     OnBoardingPage(
       image: 'assets/onboarding.png',
-      title: 'Take Action',
-      subtitle: 'Act on early warning signs with guided steps.',
+      title: 'Crisis & Support Plan',
+      subtitle:
+          "⚠️ Plan Ahead for Tough Moments\nSet up an emergency support plan so\n you have help when you need it.\nAdd a trusted contact 📞\nChoose a calming activity🧘\nSet up an automatic alert for major\nmood shifts 🚨",
+      buttonText: 'Set Up Plan',
     ),
     OnBoardingPage(
       image: 'assets/onboarding.png',
-      title: 'Stay Connected',
-      subtitle: 'Share your progress with your support network.',
+      title: 'Personalized Insights\n& Alerts',
+      subtitle:
+          "📊 Stay One Step Ahead\nWe’ll notify you when we detect changes\nthat might signal a mood shift.\n✅ Get early warning signs based on your\ndata\n✅ Track patterns & triggers over time\n✅ Receive personalized\nrecommendations",
+      buttonText: "Got it! Let's Start",
     ),
   ];
 
@@ -60,6 +69,18 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
     return Scaffold(
       body: Column(
         children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 110), // Distância da imagem
+              child: Image.asset(
+                _pages[_currentPage].image,
+                height: 180,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // PageView
           Expanded(
             child: PageView.builder(
               controller: _pageController,
@@ -74,11 +95,10 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(page.image, height: 150, fit: BoxFit.cover),
-                    const SizedBox(height: 20),
                     Text(
                       page.title,
-                      textAlign: TextAlign.center,
+                      textAlign:
+                          TextAlign.center, // Centraliza todos os títulos
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
@@ -90,8 +110,10 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         page.subtitle,
-                        textAlign:
-                            index == 1 ? TextAlign.left : TextAlign.center,
+                        textAlign: index == 0
+                            ? TextAlign.center
+                            : TextAlign
+                                .start, // Centraliza apenas o subtítulo da primeira página
                         style: const TextStyle(
                           fontSize: 16,
                           color: Color(0xFF090A0A),
@@ -133,11 +155,30 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                 vertical: 15,
               ),
             ),
-            child: const Text(
-              'How does it work?',
-              style: TextStyle(color: Colors.white),
+            child: Text(
+              _pages[_currentPage].buttonText,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
+          const SizedBox(height: 5),
+          if (_currentPage == 1)
+            GestureDetector(
+              onTap: () {},
+              child: RichText(
+                text: const TextSpan(
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: 'Learn More',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {},
